@@ -28,7 +28,12 @@ module EmberCli
     end
 
     def dist
-      @dist ||= root.join("dist")
+      @dist ||= case @environment
+        when 'development', 'test'
+          ember_cli_root.join("apps", app_name).tap(&:mkpath)
+        else
+          root.join("dist")
+        end
     end
 
     def gemfile

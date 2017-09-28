@@ -28,7 +28,7 @@ module EmberCli
     end
 
     def dist
-      @dist ||= ember_cli_root.join("apps", app_name).tap(&:mkpath)
+      @dist ||= root.join("dist")
     end
 
     def gemfile
